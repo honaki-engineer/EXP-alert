@@ -45,7 +45,7 @@
                                 <div class="p-2 w-full">
                                 <div class="relative">
                                     <label for="image_path" class="leading-7 text-sm text-gray-600">食品画像</label><br>
-                                    <input type="file" id="image_path" name="image_path" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    <input type="file" id="image_path" name="image_path" class="text-base file:text-base">
                                 </div>
                                 </div>
     
@@ -69,4 +69,10 @@
           </div>
       </div>
   </div>
+{{-- 日付クリック有効範囲を全域にする --}}
+<script>
+document.getElementById("deadline").addEventListener("click", function() {
+    this.showPicker(); // Chrome でカレンダーを開く
+});
+</script>
 </x-app-layout>
