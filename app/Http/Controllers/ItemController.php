@@ -86,7 +86,9 @@ class ItemController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = Auth::user()->items()->findOrFail($id);
+
+        return view('items.edit', compact('item'));
     }
 
     /**
@@ -98,7 +100,24 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $item = Auth::user()->items()->findOrFail($id);
+
+        $imagePath = $item->image_path; // 既存の画像パスを取得
+
+        // 新しい画像がアップロードされた場合
+        if ($request->hasFile('image_path')) {
+            $imagePath = $request->file('image_path')->store('items', 'public');
+        }
+
+        $item->update([
+            'name' => $request->name,
+            'expiration_type' => $request->expiration_type,
+            'deadline' => $request->deadline,
+            'comment' => $request->comment,
+            'image_path' => $imagePath,
+        ]);
+
+        return to_route('items.index');
     }
 
     /**

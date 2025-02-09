@@ -39,7 +39,7 @@
                                 <div class="relative">
                                     <label for="image_path" class="leading-7 text-sm text-gray-600">食品画像</label><br>
                                         <img class="lg:w-2/6 md:w-3/6 w-5/6 object-cover object-center rounded" 
-                                        {{-- alt="食品画像"  --}}
+                                        alt="食品画像" 
                                         src="{{ asset('storage/' . (optional($item)->image_path ?? 'items/noImage.jpg')) }} ">
                                 </div>
                                 </div>
@@ -50,9 +50,11 @@
                                 </div>
                                 </div>
 
-                                <div class="p-2 w-full">
-                                <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">食品を登録する</button>
-                                </div>
+                                <form action="{{ route('items.edit', ['item' => $item->id]) }}" method="get">
+                                    <div class="p-2 w-full">
+                                    <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">編集する</button>
+                                    </div>
+                                </form>
                                 
                             </div>
                             </div>
