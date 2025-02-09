@@ -156,6 +156,10 @@ return [
     'attributes' => [
       'password' => 'パスワード',
       'comment' => 'コメント',
+      'name' => '名前',
+      'expiration_type' => '種類',
+      'deadline' => '期限',
+      'image_path' => '画像',
     ],
 
 ];

@@ -20,6 +20,7 @@
                             <div class="flex flex-wrap -m-2">
                                 <div class="p-2 w-full">
                                 <div class="relative">
+                                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
                                     <label for="name" class="leading-7 text-sm text-gray-600">食品名</label>
                                     <input type="text" id="name" name="name" value="{{ $item->name }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 </div>
@@ -27,8 +28,8 @@
 
                                 <div class="p-2 w-full">
                                 <div class="relative">
-                                    <label class="leading-7 text-sm text-gray-600">消費 or 賞味</label>
-                                    <br>
+                                    <x-input-error :messages="$errors->get('expiration_type')" class="mt-2" />
+                                    <label class="leading-7 text-sm text-gray-600">消費 or 賞味</label><br>
                                     <input type="radio" name="expiration_type" value="0" @if($item->expiration_type == 0) checked @endif>消費期限
                                     <input type="radio" name="expiration_type" value="1" @if($item->expiration_type == 1) checked @endif>賞味期限
                                 </div>
@@ -36,12 +37,12 @@
 
                                 <div class="p-2 w-1/2">
                                 <div class="relative">
+                                    <x-input-error :messages="$errors->get('deadline')" class="mt-2" />
                                     <label for="deadline" class="leading-7 text-sm text-gray-600">有効期限</label>
                                     <input type="date" id="deadline" name="deadline" value="{{ $item->deadline }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 </div>
                                 </div>
                                 
-
                                 {{-- 画像 --}}
                                 <div class="p-2 w-full">
                                     {{-- プレビュー --}}
@@ -54,6 +55,7 @@
                                 </div>
                                     {{-- 画像選択 --}}
                                 <div class="mb-4">
+                                    <x-input-error :messages="$errors->get('image_path')" class="mt-2" />
                                     <label for="image_path" class="leading-7 text-sm text-gray-600">画像を変更</label><br>
                                     <input type="file" id="image_path" name="image_path" accept="image/*"
                                     class="text-base file:text-base"
@@ -61,10 +63,9 @@
                                 </div>
                                 </div>
                                 
-                            
-    
                                 <div class="p-2 w-full">
                                 <div class="relative">
+                                    <x-input-error :messages="$errors->get('comment')" class="mt-2" />
                                     <label for="comment" class="leading-7 text-sm text-gray-600">コメント</label>
                                     <textarea id="comment" name="comment" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out">{{ $item->comment }}</textarea>
                                 </div>
@@ -73,7 +74,6 @@
                                 <div class="p-2 w-full">
                                 <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">更新する</button>
                                 </div>
-                                
                             </div>
                             </div>
                         </div>
