@@ -50,9 +50,18 @@
                                 </div>
                                 </div>
 
+                                {{-- 編集 --}}
                                 <form action="{{ route('items.edit', ['item' => $item->id]) }}" method="get">
                                     <div class="p-2 w-full">
                                     <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">編集する</button>
+                                    </div>
+                                </form>
+                                {{-- 削除 --}}
+                                <form id="delete_{{ $item->id }}" action="{{ route('items.destroy', ['item' => $item->id]) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <div class="p-2 w-full">
+                                    <a href="#" data-id="{{ $item->id }}" onclick="deletePost(this)" class="flex mx-auto text-white bg-pink-500 border-0 py-2 px-8 focus:outline-none hover:bg-pink-600 rounded text-lg">削除する</a>
                                     </div>
                                 </form>
                                 
@@ -65,4 +74,13 @@
           </div>
       </div>
   </div>
+<!-- 確認メッセージ -->
+<script>
+function deletePost(e){
+    'use strict'
+    if(confirm('本当に削除していいですか？')){
+        document.getElementById('delete_' + e.dataset.id).submit() //id = 「'delete_' + e.dataset.id」のフォームを取得して、submit()
+    }
+}
+</script>
 </x-app-layout>

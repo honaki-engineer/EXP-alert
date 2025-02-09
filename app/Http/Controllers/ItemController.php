@@ -128,6 +128,9 @@ class ItemController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = Auth::user()->items()->findOrFail($id);
+        $item->delete();
+
+        return to_route('items.index');
     }
 }
