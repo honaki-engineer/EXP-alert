@@ -33,6 +33,11 @@ class ItemController extends Controller
      */
     public function create()
     {
+        // 直前のリクエストがバリデーションエラーでなければセッションの画像を削除**
+        if (!session()->has('_old_input')) { 
+            session()->forget('image_path');
+        }
+
         return view('items.create');
     }
 
@@ -42,17 +47,31 @@ class ItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ItemFormRequest $request)
+    public function store(Request $request)
     {
         $imagePath = null;
 
         // 画像がアップロードされた場合
         if ($request->hasFile('image_path')) {
-            $imagePath = $request->file('image_path')->store('items', 'public');
+            $imagePath = $request->file('image_path');
+
+            $imageName = time() . '.' . $imagePath->getClientOriginalExtension();
+
+            // `storage/app/public/tmp` に一時保存
+            $imagePath->storeAs('public/tmp/', $imageName);
+
+            // セッションに画像のパスを保存
+            session(['image_path' => $imageName]);
         }
 
+        // バリデーション
+        $validatedData = ItemControllerService::storeItemValidate($request);
+
         // 保存
-        Item::create(ItemControllerService::storeItemRequestData($request, $imagePath));
+        Item::create(ItemControllerService::storeItemRequestData($request, $imagePath, $validatedData));
+
+        // 一時保存した画像のパスをクリア
+        session()->forget('image_path');
 
         return to_route('items.index');
     }

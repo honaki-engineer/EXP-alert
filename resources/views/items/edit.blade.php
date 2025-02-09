@@ -104,5 +104,4 @@ function previewImage(event) {
     }
 }
 </script>
-    
 </x-app-layout>
