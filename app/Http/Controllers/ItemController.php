@@ -69,7 +69,13 @@ class ItemController extends Controller
      */
     public function show($id)
     {
-        //
+        $item = Auth::user()->items()->findOrFail($id);
+
+        // テーブル内の数字を日本語に変換
+        if($item->expiration_type === 0){$item->expiration_label = '消費期限';}
+        if($item->expiration_type === 1){$item->expiration_label = '賞味期限';}
+
+        return view('items.show', compact('item'));
     }
 
     /**

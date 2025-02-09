@@ -15,7 +15,8 @@
                         <table class="table-auto w-full text-left whitespace-no-wrap">
                         <thead>
                             <tr>
-                            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">食品名</th>
+                            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">詳細</th>
+                            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">食品名</th>
                             <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">種類</th>
                             <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">期限</th>
                             <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">コメント</th>
@@ -24,6 +25,7 @@
                         <tbody>
                             @foreach($items as $item)
                             <tr>
+                            <td class="border-t-2 border-gray-200 px-4 py-3"><a class="text-blue-500" href="{{ route('items.show', ['item' => $item->id]) }}">詳細</a></td>
                             <td class="border-t-2 border-gray-200 px-4 py-3">{{ $item->name }}</td>
                             <td class="border-t-2 border-gray-200 px-4 py-3">{{ $item->expiration_type }}</td>
                             <td class="border-t-2 border-gray-200 px-4 py-3">{{ $item->deadline }}</td>
