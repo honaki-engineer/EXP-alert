@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use App\Models\User;
+use App\Services\ItemControllerService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+
 
 class ItemController extends Controller
 {
@@ -49,14 +51,7 @@ class ItemController extends Controller
         }
 
         // 保存
-        Item::create([
-            'name' => $request->name,
-            'expiration_type' => $request->expiration_type,
-            'deadline' => $request->deadline,
-            'image_path' => $imagePath,
-            'comment' => $request->comment,
-            'user_id' => Auth::id(),
-        ]);
+        Item::create(ItemControllerService::storeItemRequestData($request, $imagePath));
 
         return to_route('items.index');
     }
@@ -109,13 +104,8 @@ class ItemController extends Controller
             $imagePath = $request->file('image_path')->store('items', 'public');
         }
 
-        $item->update([
-            'name' => $request->name,
-            'expiration_type' => $request->expiration_type,
-            'deadline' => $request->deadline,
-            'comment' => $request->comment,
-            'image_path' => $imagePath,
-        ]);
+        // 更新
+        $item->update(ItemControllerService::updateItemRequestData($request, $imagePath));
 
         return to_route('items.index');
     }
