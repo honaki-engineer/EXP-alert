@@ -27,6 +27,7 @@ class ItemController extends Controller
         $items = Auth::user()
         ->items()
         ->search($search)
+        ->orderBy('deadline', 'asc')
         ->paginate(10);
         
 
