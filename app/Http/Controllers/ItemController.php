@@ -21,7 +21,8 @@ class ItemController extends Controller
     public function index()
     {
         /** @var \App\Models\User $user */
-        $items = Auth::user()->items()->get();
+        // $items = Auth::user()->items()->get();
+        $items = Auth::user()->items()->paginate(10);
 
         return view('items.index', compact('items'));
     }

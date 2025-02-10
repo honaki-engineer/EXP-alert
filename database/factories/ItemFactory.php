@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
-use Mmo\Faker\PicsumProvider; // 追加
-use Mmo\Faker\UnsplashProvider; // 追加
+use Mmo\Faker\PicsumProvider;
+use Mmo\Faker\UnsplashProvider;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Item>
