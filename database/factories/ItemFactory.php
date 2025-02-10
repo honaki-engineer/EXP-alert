@@ -38,7 +38,7 @@ class ItemFactory extends Factory
         return [
             'name' => $this->faker->word(),
             'expiration_type' => $this->faker->boolean(),
-            'deadline' => $this->faker->date(),
+            'deadline' => $this->faker->dateTimeBetween('now', '+3 months')->format('Y-m-d'),
             'comment' => $this->faker->realText(10),
             'image_path' => $storagePath, // ✅ `storage/items/` に保存されたパス
             'user_id' => 1,

@@ -9,6 +9,7 @@ use App\Http\Requests\ItemFormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 
 class ItemController extends Controller
@@ -29,6 +30,10 @@ class ItemController extends Controller
         ->search($search)
         ->orderBy('deadline', 'asc')
         ->paginate(10);
+
+        foreach($items as $item) {
+            $item->is_near_deadline = Carbon::parse($item->deadline)->diffInDays(today()) <= 3;
+        }
         
 
         return view('items.index', compact('items'));
