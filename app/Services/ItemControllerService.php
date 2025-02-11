@@ -20,6 +20,13 @@ class ItemControllerService
     ]);
   }
 
+    // テーブル内の数字を日本語に変換
+    public static function expirationChangeLabel($item) {
+      if($item->expiration_type === 0){$item->expiration_label = '消費期限';}
+      if($item->expiration_type === 1){$item->expiration_label = '賞味期限';}
+      return $item;
+    }
+
   // 保存
   public static function storeItemRequestData($request, $imagePath, $validatedData){
     return[
