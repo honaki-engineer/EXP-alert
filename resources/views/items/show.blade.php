@@ -11,7 +11,6 @@
               <div class="p-6 text-gray-900">
 
                 <section class="text-gray-600 body-font relative">
-                    
                         <div class="container px-5 mx-auto">
                             <div class="lg:w-1/2 md:w-2/3 mx-auto">
                             <div class="flex flex-wrap -m-2">
@@ -46,7 +45,8 @@
                                 <div class="p-2 w-full">
                                 <div class="relative">
                                     <label for="comment" class="leading-7 text-sm text-gray-600">コメント</label>
-                                    <div class="w-full rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out">{{ $item->comment }}</div>
+                                    <textarea readonly {{-- フォーカス時の青い線削除 --}}
+                                    class="w-full rounded border border-gray-300 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out focus:ring-0 focus:border-gray-300">{{ $item->comment }}</textarea>
                                 </div>
                                 </div>
 
