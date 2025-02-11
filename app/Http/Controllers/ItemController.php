@@ -71,7 +71,8 @@ class ItemController extends Controller
             $imageName = time() . '.' . $imagePath->getClientOriginalExtension();
 
             // `storage/app/public/tmp` に一時保存
-            $imagePath->storeAs('public/tmp/', $imageName);
+            // 'root' => storage_path('app/public'),
+            $imagePath->storeAs('tmp', $imageName);
 
             // セッションに画像のパスを保存
             session(['image_path' => $imageName]);

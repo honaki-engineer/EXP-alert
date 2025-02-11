@@ -28,7 +28,7 @@
                         </thead>
                         <tbody>
                             @foreach($items as $item)
-                            <tr class="{{ $item->is_near_deadline ? 'bg-red-100 text-red-700' : ''}}">
+                            <tr @class(['bg-red-100 text-red-700' => $item->is_near_deadline])>
                             <td class="border-t-2 border-gray-200 px-4 py-3"><a class="text-blue-500" href="{{ route('items.show', ['item' => $item->id]) }}">詳細</a></td>
                             <td class="border-t-2 border-gray-200 px-4 py-3">{{ $item->name }}</td>
                             <td class="border-t-2 border-gray-200 px-4 py-3">{{ $item->expiration_type }}</td>
