@@ -5,8 +5,13 @@
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
+        {{-- タイトル --}}
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            食品管理アプリ
+        </h2>
+
         <!-- Email Address -->
-        <div>
+        <div class="mt-10">
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
