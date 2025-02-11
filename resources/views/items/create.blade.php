@@ -50,7 +50,7 @@
                                             {{-- 画像選択 --}}
                                             <x-input-error :messages="$errors->get('image_path')" class="mt-2" />
                                             <label for="image_path" class="leading-7 text-sm text-gray-600">食品画像</label><br>
-                                            <input type="file" id="image_path" name="image_path" class="text-base file:text-base"
+                                            <input type="file" id="image_path" name="image_path" accept="image/*" class="text-base file:text-base"
                                             onchange="previewImage(event)">
                                         </div>
                                         <div class="relative">
