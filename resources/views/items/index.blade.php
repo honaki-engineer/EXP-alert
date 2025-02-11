@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="header">
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-          消費/賞味期限の一覧
+          食品一覧
       </h2>
   </x-slot>
 
