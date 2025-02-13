@@ -18,8 +18,7 @@ use App\Http\Controllers\ItemController;
 Route::resource('items', ItemController::class)->middleware(['auth']);
 
 Route::get('/', function () {
-    // /の遷移先
-    return Auth::check() ? redirect('/items') : redirect('/login');
+    return view('welcome');
 });
 
 Route::get('/dashboard', function () {
