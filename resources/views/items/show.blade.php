@@ -39,7 +39,7 @@
                                     <label for="image_path" class="leading-7 text-sm text-gray-600">食品画像</label><br>
                                         <img class="lg:w-2/6 md:w-3/6 w-5/6 object-cover object-center rounded" 
                                         alt="食品画像" 
-                                        src="{{ asset('storage/' . (optional($item)->image_path ?? 'items/noImage.jpg')) }} ">
+                                        src="{{ asset('storage/items/' . (optional($item)->image_path ?? 'noImage.jpg')) }} ">
                                 </div>
                                 </div>
                                 <div class="p-2 w-full">

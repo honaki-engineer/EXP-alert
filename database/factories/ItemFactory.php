@@ -32,8 +32,8 @@ class ItemFactory extends Factory
         }
 
         // 2️⃣ `storage/app/public/items/` に保存
-        $storagePath = 'items/' . Str::random(10) . '.jpg';
-        Storage::disk('public')->put($storagePath, file_get_contents($tempPath));
+        $storagePath = Str::random(10) . '.jpg'; // 10文字のランダムなファイル名を作成
+        Storage::disk('public')->put('items/' . $storagePath, file_get_contents($tempPath)); // `storage/app/public/items/` に保存
 
         return [
             'name' => $this->faker->word(),

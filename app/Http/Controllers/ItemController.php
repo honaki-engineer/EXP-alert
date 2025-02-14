@@ -32,8 +32,14 @@ class ItemController extends Controller
         ->paginate(10);
 
         foreach($items as $item) {
-            // 3日以内に期限がくるアラーム
-            $item->is_near_deadline = Carbon::parse($item->deadline)->diffInDays(today()) <= 3;
+            if($item->deadline) {
+                // 過ぎていたらアラーム
+                $item->is_lt_deadline = Carbon::parse($item->deadline)->lt(today()); //less than
+            
+                // 3日以内に期限がくるアラーム
+                $item->is_near_deadline = Carbon::parse($item->deadline)->gte(today()) // 今日以降のみ対象
+                && Carbon::parse($item->deadline)->diffInDays(today()) <= 3;
+            }
 
             // テーブル内の数字を日本語に変換
             ItemControllerService::expirationChangeLabel($item);
@@ -50,11 +56,6 @@ class ItemController extends Controller
      */
     public function create()
     {
-        // 直前のリクエストがバリデーションエラーでなければセッションの画像を削除**
-        if (!session()->has('_old_input')) { 
-            session()->forget('image_path');
-        }
-
         return view('items.create');
     }
 
@@ -64,7 +65,7 @@ class ItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ItemFormRequest $request)
     {
         $imagePath = null;
 
@@ -73,23 +74,13 @@ class ItemController extends Controller
             $imagePath = $request->file('image_path');
 
             $imageName = time() . '.' . $imagePath->getClientOriginalExtension();
-
-            // `storage/app/public/tmp` に一時保存
-            // 'root' => storage_path('app/public'),
-            $imagePath->storeAs('tmp', $imageName);
-
-            // セッションに画像のパスを保存
-            session(['image_path' => $imageName]);
         }
-
-        // バリデーション
-        $validatedData = ItemControllerService::storeItemValidate($request);
-
+        
         // 保存
-        Item::create(ItemControllerService::storeItemRequestData($request, $imagePath, $validatedData));
-
-        // 一時保存した画像のパスをクリア
-        session()->forget('image_path');
+        Item::create(ItemControllerService::storeItemRequestData($request, $imagePath));
+        
+        // 'root' => storage_path('app/public'),
+        if ($request->hasFile('image_path')) { $imagePath->storeAs('items', $imageName); }
 
         return to_route('items.index');
     }
@@ -134,15 +125,18 @@ class ItemController extends Controller
     {
         $item = Auth::user()->items()->findOrFail($id);
 
-        $imagePath = $item->image_path; // 既存の画像パスを取得
+        $imagePath = $item->image_path; // 既存の画像を取得
 
-        // 新しい画像がアップロードされた場合
         if ($request->hasFile('image_path')) {
-            $imagePath = $request->file('image_path')->store('items', 'public');
+            $imagePath = $request->file('image_path');
+
+            $imageName = time() . '.' . $imagePath->getClientOriginalExtension();
         }
 
         // 更新
         $item->update(ItemControllerService::updateItemRequestData($request, $imagePath));
+
+        if ($request->hasFile('image_path')) { $imagePath->storeAs('items', $imageName); }
 
         return to_route('items.index');
     }
@@ -156,6 +150,13 @@ class ItemController extends Controller
     public function destroy($id)
     {
         $item = Auth::user()->items()->findOrFail($id);
+
+        // 🔹 画像が `storage/app/public/items/` に存在する場合、削除
+        if ($item->image_path) {
+            // if('items/' . $item->image_path !== )
+            Storage::disk('public')->delete('items/' . $item->image_path);
+        }
+
         $item->delete();
 
         return to_route('items.index');

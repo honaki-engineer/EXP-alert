@@ -28,7 +28,7 @@ class ItemFormRequest extends FormRequest
             'expiration_type' => ['required', 'boolean'],
             'deadline' => ['required', 'date'],
             'comment' => ['nullable', 'string', 'max:255'],
-            'image_path' => ['nullable', 'image', 'max:2048']
+            'image_path' => ['nullable', 'image', 'max:10240']
         ];
     }
 }

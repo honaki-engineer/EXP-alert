@@ -49,7 +49,7 @@
                                 <div class="mb-1">
                                     <label for="image_path" class="leading-7 text-sm text-gray-600">現在の食品画像：</label>
                                     <img id="imagePreview" 
-                                        src="{{ asset('storage/' . (optional($item)->image_path ?? 'items/noImage.jpg')) }}" 
+                                        src="{{ asset('storage/items/' . (optional($item)->image_path ?? 'noImage.jpg')) }}" 
                                         alt="食品画像"
                                         class="lg:w-2/6 md:w-2/6 w-2/6 object-cover object-center rounded">
                                 </div>
