@@ -45,7 +45,6 @@ class ItemController extends Controller
             ItemControllerService::expirationChangeLabel($item);
         }
         
-
         return view('items.index', compact('items'));
     }
 
@@ -67,7 +66,7 @@ class ItemController extends Controller
      */
     public function store(ItemFormRequest $request)
     {
-        $imagePath = null;
+        $imageName = null;
 
         // 画像がアップロードされた場合
         if ($request->hasFile('image_path')) {
@@ -75,7 +74,7 @@ class ItemController extends Controller
 
             $imageName = time() . '.' . $imagePath->getClientOriginalExtension();
             
-            // 'root' => storage_path('app/public'),
+            // 保存のみ
             $imagePath->storeAs('items', $imageName);
         }
         
@@ -126,13 +125,14 @@ class ItemController extends Controller
     {
         $item = Auth::user()->items()->findOrFail($id);
 
-        $imagePath = $item->image_path; // 既存の画像を取得
+        $imageName = $item->image_path; // 既存の画像を取得
 
         if ($request->hasFile('image_path')) {
             $imagePath = $request->file('image_path');
 
             $imageName = time() . '.' . $imagePath->getClientOriginalExtension();
             
+            // 保存のみ
             $imagePath->storeAs('items', $imageName);
         }
 

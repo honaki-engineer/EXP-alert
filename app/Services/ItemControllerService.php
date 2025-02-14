@@ -17,25 +17,25 @@ class ItemControllerService
     }
 
   // 保存
-  public static function storeItemRequestData($request, $imagePath){
+  public static function storeItemRequestData($request, $imageName){
     return[
       'name' => $request->name,
       'expiration_type' => $request->expiration_type,
       'deadline' => $request->deadline,
-      'image_path' => $imagePath, // 画像がある場合のみ保存
+      'image_path' => $imageName, // 画像がある場合のみ保存
       'comment' => $request->comment,
       'user_id' => Auth::id(),
     ];
   }
 
   // 更新
-  public static function updateItemRequestData($request, $imagePath){
+  public static function updateItemRequestData($request, $imageName){
     return[
       'name' => $request->name,
       'expiration_type' => $request->expiration_type,
       'deadline' => $request->deadline,
       'comment' => $request->comment,
-      'image_path' => $imagePath,
+      'image_path' => $imageName,
     ];
   }
 }
