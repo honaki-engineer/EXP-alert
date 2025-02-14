@@ -74,13 +74,14 @@ class ItemController extends Controller
             $imagePath = $request->file('image_path');
 
             $imageName = time() . '.' . $imagePath->getClientOriginalExtension();
+            
+            // 'root' => storage_path('app/public'),
+            $imagePath->storeAs('items', $imageName);
         }
         
         // 保存
-        Item::create(ItemControllerService::storeItemRequestData($request, $imagePath));
+        Item::create(ItemControllerService::storeItemRequestData($request, $imageName));
         
-        // 'root' => storage_path('app/public'),
-        if ($request->hasFile('image_path')) { $imagePath->storeAs('items', $imageName); }
 
         return to_route('items.index');
     }
@@ -131,12 +132,13 @@ class ItemController extends Controller
             $imagePath = $request->file('image_path');
 
             $imageName = time() . '.' . $imagePath->getClientOriginalExtension();
+            
+            $imagePath->storeAs('items', $imageName);
         }
 
         // 更新
-        $item->update(ItemControllerService::updateItemRequestData($request, $imagePath));
+        $item->update(ItemControllerService::updateItemRequestData($request, $imageName));
 
-        if ($request->hasFile('image_path')) { $imagePath->storeAs('items', $imageName); }
 
         return to_route('items.index');
     }
