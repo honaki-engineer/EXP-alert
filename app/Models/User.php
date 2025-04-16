@@ -85,4 +85,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Item::class);
     }
+
+    // ゲストログインか否かを判別
+    public function isGuest()
+    {
+    return $this->email === 'guest@example.com';
+    }
 }

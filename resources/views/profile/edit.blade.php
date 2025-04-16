@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
+            {{ __('Profile') }} @if(Auth::user()->isGuest()) (GuestLoginの場合、編集不可) @endif
         </h2>
     </x-slot>
 
