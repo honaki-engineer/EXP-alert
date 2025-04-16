@@ -10,10 +10,9 @@ class GuestLoginController extends Controller
 {
     public function login(Request $request)
     {
-        // 🔐 リファラーをチェック
-        $referer = $request->headers->get('referer');
-        if (!$referer || !str_contains($referer, 'https://akkun1114.com/collections')) {
-            abort(403, 'このページにはアクセスできません');
+        // 🔐 トークン検証（任意の文字列）
+        if ($request->token !== config('app.guest_token')) {
+            abort(403, '不正なアクセスです。');
         }
 
         // ✅ ゲストユーザーを取得 or 作成
