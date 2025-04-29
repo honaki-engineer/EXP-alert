@@ -33,7 +33,7 @@
                                 hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 
                                 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 
                                 transition duration-300">
-                        Login
+                        ログイン
                     </a>
 
                     @if (Route::has('register'))
@@ -43,7 +43,7 @@
                                     hover:bg-gray-300 focus:bg-gray-300 active:bg-gray-500 
                                     focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2 
                                     transition duration-300">
-                            Register
+                            新規登録
                         </a>
                     @endif
                 @endauth
