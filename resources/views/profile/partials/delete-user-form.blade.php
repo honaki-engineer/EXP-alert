@@ -47,7 +47,7 @@
                     id="password"
                     name="password"
                     type="password"
-                    class="mt-1 block w-3/4"
+                    class="mt-1 block w-full sm:w-3/4"
                     placeholder="{{ __('profile.password') }}"
                 />
 
@@ -63,14 +63,13 @@
                     {{ __('Delete Account') }}
                 </x-danger-button> --}}
                 @if(Auth::user()->isGuest())
-                    <x-danger-button disabled class="opacity-50 cursor-not-allowed">
+                    {{-- 表示はされるが無効化 --}}
+                    <x-danger-button class="ml-3 opacity-50 cursor-not-allowed" disabled>
                         {{ __('profile.delete_account') }}
                     </x-danger-button>
                 @else
-                    <x-danger-button
-                        x-data=""
-                        x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
-                    >
+                    {{-- 通常ユーザー用 --}}
+                    <x-danger-button type="submit" class="ml-3">
                         {{ __('profile.delete_account') }}
                     </x-danger-button>
                 @endif
