@@ -1,5 +1,4 @@
-<!-- resources/views/components/footer.blade.php -->
-<footer class="bg-white py-4 text-center text-sm text-gray-500 shadow">
+<footer class="shadow bg-gray-200 py-4 text-center text-sm text-gray-500 w-full">
     &copy;
     <span class="ml-1">{{ date('Y') }}</span>
     <span class="ml-1">{{ config('app.name') }}</span>

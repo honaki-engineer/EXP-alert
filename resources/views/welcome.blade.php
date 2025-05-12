@@ -11,45 +11,48 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="font-sans antialiased flex items-center justify-center min-h-screen bg-gray-100">
 
-    <div class="text-center">
-        <!-- タイトル -->
-        <h1 class="text-4xl font-bold text-gray-800 mb-6">食品管理アプリ</h1>
-
-        @if (Route::has('login'))
-            <!-- ボタンコンテナ -->
-            <div class="space-x-4">
-                @auth
-                    <a href="{{ url('/items') }}" class="px-6 py-3 bg-gray-800 text-white text-lg font-semibold rounded-lg shadow-md 
-                                hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 
-                                focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 
-                                transition duration-300">トップページへ</a>
-                @else
-                    <!-- ログインボタン -->
-                    
-                    <a href="{{ route('login') }}"
-                        class="px-6 py-3 bg-gray-800 text-white text-lg font-semibold rounded-lg shadow-md 
-                                hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 
-                                focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 
-                                transition duration-300">
-                        ログイン
-                    </a>
-
-                    @if (Route::has('register'))
-                        <!-- 新規登録ボタン -->
-                        <a href="{{ route('register') }}"
-                            class="px-6 py-3 bg-gray-400 text-white text-lg font-semibold rounded-lg shadow-md 
-                                    hover:bg-gray-300 focus:bg-gray-300 active:bg-gray-500 
-                                    focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2 
+<body class="min-h-screen flex flex-col font-sans antialiased items-center justify-center bg-gray-100">
+    <main class="flex-grow flex flex-col items-center justify-center text-center">
+        <div class="text-center">
+            <!-- タイトル -->
+            <h1 class="text-4xl font-bold text-gray-800 mb-6">食品管理アプリ</h1>
+    
+            @if (Route::has('login'))
+                <!-- ボタンコンテナ -->
+                <div class="space-x-4">
+                    @auth
+                        <a href="{{ url('/items') }}" class="px-6 py-3 bg-gray-800 text-white text-lg font-semibold rounded-lg shadow-md 
+                                    hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 
+                                    focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 
+                                    transition duration-300">トップページへ</a>
+                    @else
+                        <!-- ログインボタン -->
+                        
+                        <a href="{{ route('login') }}"
+                            class="px-6 py-3 bg-gray-800 text-white text-lg font-semibold rounded-lg shadow-md 
+                                    hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 
+                                    focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 
                                     transition duration-300">
-                            新規登録
+                            ログイン
                         </a>
-                    @endif
-                @endauth
-            </div>
-        @endif
-    </div>
+    
+                        @if (Route::has('register'))
+                            <!-- 新規登録ボタン -->
+                            <a href="{{ route('register') }}"
+                                class="px-6 py-3 bg-gray-400 text-white text-lg font-semibold rounded-lg shadow-md 
+                                        hover:bg-gray-300 focus:bg-gray-300 active:bg-gray-500 
+                                        focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2 
+                                        transition duration-300">
+                                新規登録
+                            </a>
+                        @endif
+                    @endauth
+                </div>
+            @endif
+        </div>
+    </main>
 
+    <x-footer-top />
 </body>
 </html>
