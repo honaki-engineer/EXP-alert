@@ -105,7 +105,11 @@ php artisan migrate --seed
 npm install
 npm run dev  # 本番では npm run build
 ```
-7. サーバー起動 (ローカル開発用)
+7. ストレージリンク作成 (画像表示のため必須)
+```bash
+php artisan storage:link
+```
+8. サーバー起動 (ローカル開発用)
 ```bash
 php artisan serve
 ```
