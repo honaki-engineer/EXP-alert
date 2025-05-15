@@ -75,7 +75,7 @@ class ItemController extends Controller
             $imageName = time() . '.' . $imagePath->getClientOriginalExtension();
             
             // 保存のみ
-            $imagePath->storeAs('items', $imageName);
+            $imagePath->storeAs('items', $imageName, 'public');
         }
         
         // 保存
@@ -133,7 +133,7 @@ class ItemController extends Controller
             $imageName = time() . '.' . $imagePath->getClientOriginalExtension();
             
             // 保存のみ
-            $imagePath->storeAs('items', $imageName);
+            $imagePath->storeAs('items', $imageName, 'public');
         }
 
         // 更新
