@@ -16,7 +16,7 @@
     <main class="flex-grow flex flex-col items-center justify-center text-center">
         <div class="text-center">
             <!-- タイトル -->
-            <h1 class="text-4xl font-bold text-gray-800 mb-6">食品管理アプリ</h1>
+            <h1 class="text-4xl font-bold text-gray-800 mb-6">消費期限管理アプリ</h1>
     
             @if (Route::has('login'))
                 <!-- ボタンコンテナ -->
