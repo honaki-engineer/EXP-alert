@@ -33,7 +33,7 @@
 
 ## 使用技術
 
-- **フロントエンド**：HTML / CSS / JavaScript / jQuery / Tailwind CSS / Vite
+- **フロントエンド**：HTML / JavaScript / Tailwind CSS / Vite
 - **バックエンド**：PHP 8.1 / Laravel 9.x  
 - **データベース**：MySQL (Xserver)  
 - **インフラ・環境**：MAMP / MacBook / Xserver  
