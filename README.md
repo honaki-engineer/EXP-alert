@@ -34,7 +34,7 @@
 ## 使用技術
 
 - **フロントエンド**：HTML / JavaScript / Tailwind CSS / Vite
-- **バックエンド**：PHP 8.1 / Laravel 9.x  
+- **バックエンド**：PHP 8.2 / Laravel 9.x  
 - **データベース**：MySQL (Xserver)  
 - **インフラ・環境**：MAMP / MacBook / Xserver  
 - **開発ツール**：VSCode / Git / GitHub / phpMyAdmin  
@@ -56,7 +56,7 @@
 
 ## セットアップ前に必要なもの
 
-- PHP 8.1 以上
+- PHP 8.2 以上
 - Composer 2.x
 - MySQL (ローカル or Xserver上で構成)
 - Node.js (Tailwindをビルド)
