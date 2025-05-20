@@ -36,7 +36,7 @@
 - **フロントエンド**：HTML / JavaScript / Tailwind CSS / Vite
 - **バックエンド**：PHP 8.2 / Laravel 9.x  
 - **データベース**：MySQL (Xserver)  
-- **インフラ・環境**：MAMP / MacBook / Xserver  
+- **インフラ・環境**：MAMP / macOS Sequoia 15.3.1 / Xserver  
 - **開発ツール**：VSCode / Git / GitHub / phpMyAdmin  
 
 ---
