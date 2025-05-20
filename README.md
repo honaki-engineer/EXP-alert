@@ -35,9 +35,9 @@
 
 - **フロントエンド**：HTML / JavaScript / Tailwind CSS / Vite
 - **バックエンド**：PHP 8.2 / Laravel 9.x  
-- **データベース**：MySQL (Xserver)  
+- **データベース**：MySQL 8.0 (ローカル) / MariaDB 10.5 (Xserver・MySQL互換)  
 - **インフラ・環境**：MAMP / macOS Sequoia 15.3.1 / Xserver  
-- **ビルド環境**：Node.js 22.x (ローカル開発用) / Node.js 16.20.2 (本番環境 / Xserver に nodebrew で導入) / Composer 2.x  
+- **ビルド環境**：Node.js 22.x (ローカル) / Node.js 16.20.2 (本番環境 / Xserver に nodebrew で導入) / Composer 2.x  
 - **開発ツール**：VSCode / Git / GitHub / phpMyAdmin  
 
 ---
