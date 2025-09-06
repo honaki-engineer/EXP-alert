@@ -2,8 +2,8 @@
 
 ## 概要
 
-**消費（賞味）期限を簡単に記録・管理・可視化**できる Laravel 製アプリです。  
-ユーザーは食品の消費（賞味）期限を登録でき、**一覧表示・期限切れアラート・検索などの機能を通じて、在庫管理や食品ロス削減をサポート**します。  
+**消費（賞味）期限**を簡単に記録・管理・可視化できる Laravel 製アプリです。  
+ユーザーは食品の消費（賞味）期限を登録でき、一覧表示・期限切れアラート・検索などの機能を通じて、**在庫管理や食品ロス削減をサポート**します。  
 また、ログイン機能やバリデーション、エラーページ対応など、使いやすさにも配慮した設計となっています。
 
 ---
@@ -40,9 +40,9 @@
 
 - **フロントエンド**：HTML / JavaScript / Tailwind CSS  
 - **バックエンド**：PHP 8.2 / Laravel 9.x  
-- **データベース**：MySQL 8.0（開発: MAMP） / MariaDB 10.5（本番:Xserver、MySQL互換）  
+- **データベース**：MySQL 8.0（開発: MAMP） / MariaDB 10.5（本番: Xserver、MySQL互換）  
 - **インフラ・環境**：MAMP / macOS Sequoia 15.3.1 / Xserver  
-- **ビルド環境**：Node.js 22.17.0（開発） / Node.js 16.20.2（本番:Xserver に nodebrew で導入） / Composer 2.x  
+- **ビルド環境**：Node.js 22.17.0（開発） / Node.js 16.20.2（本番: Xserver に nodebrew で導入） / Composer 2.x  
 - **開発ツール**：VSCode / Git / GitHub / phpMyAdmin  
   
 ※ ローカル開発環境は、Node.js 22.x を使用してビルドを実行しています。  
@@ -215,7 +215,6 @@ EXP-alert/
 ├── routes/
 │   └── web.php              # ルーティング設定
 ├── storage/                 # ログ、ファイルストレージ
-├── tests/                   # PHPUnit テスト
 ├── .env.example             # 環境変数のテンプレート
 ├── composer.json            # PHPパッケージ管理
 ├── package.json             # Node.js用パッケージ管理（Tailwind/Viteなど）
