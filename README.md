@@ -90,7 +90,7 @@ cd EXP-alert
 cp .env.example .env
 ```
 .env の `DB_` 各項目などは、開発環境に応じて適宜変更してください。  
-- [.env 設定例](#env-設定例)
+- [.env 設定例（開発用）](#env-設定例開発用)
 3. PHPパッケージをインストール
 ```bash
 composer install
