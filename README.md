@@ -29,7 +29,7 @@
 - [デモサイト](#デモサイト)
 - [使用技術](#使用技術)
 - [主な機能](#主な機能)
-- [セットアップ手順](#セットアップ手順)
+- [セットアップ手順(開発環境)](#セットアップ手順開発環境)
 - [ディレクトリ構成](#ディレクトリ構成)
 - [本番環境の注意点](#本番環境の注意点)
   
@@ -89,16 +89,11 @@ cd EXP-alert
 ```bash
 cp .env.example .env
 ```
-.env の `DB_` 各項目などは、Xserver またはローカルの環境に応じて適宜変更してください。  
-- [.env 設定例（開発用）](#env-設定例開発用)
-- [.env 設定例（本番用）](#env-設定例本番用)
+.env の `DB_` 各項目などは、開発環境に応じて適宜変更してください。  
+- [.env 設定例](#env-設定例)
 3. PHPパッケージをインストール
 ```bash
-# 開発
 composer install
-
-# 本番
-composer install --no-dev --optimize-autoloader
 ```
 4. アプリケーションキーを生成
 ```bash
@@ -111,18 +106,13 @@ php artisan migrate --seed
 6. フロントエンドビルド（Tailwind/Vite 使用時）
 ```bash
 npm install
-
-# 開発
 npm run dev
-
-# 本番
-npm run build
 ```
 7. ストレージリンク作成（画像表示のため必須）
 ```bash
 php artisan storage:link
 ```
-8. サーバー起動（開発のみ）
+8. サーバー起動
 ```bash
 php artisan serve
 ```
@@ -140,13 +130,13 @@ APP_URL=http://localhost
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=exp_alert
-DB_USERNAME=root
-DB_PASSWORD=root
+DB_DATABASE=your_database
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
 
 # Mailpit を使う場合
 MAIL_MAILER=smtp
-MAIL_HOST=localhost
+MAIL_HOST=localhost # MAMP の場合
 MAIL_PORT=1025
 MAIL_USERNAME=null
 MAIL_PASSWORD=null
@@ -154,34 +144,7 @@ MAIL_ENCRYPTION=null
 MAIL_FROM_ADDRESS="hello@example.com"
 MAIL_FROM_NAME="${APP_NAME}"
 
-GUEST_LOGIN_TOKEN=guest123
-```
-
-### .env 設定例（本番用）
-
-```env
-APP_NAME=消費期限管理
-APP_ENV=production
-APP_DEBUG=false
-APP_URL=https://example.com
-
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=（本番用 データベース）
-DB_USERNAME=（本番用 ユーザー）
-DB_PASSWORD=（本番用 DBuser パスワード）
-
-# Gmail の場合
-MAIL_MAILER=smtp
-MAIL_HOST=smtp.gmail.com
-MAIL_PORT=587
-MAIL_USERNAME=（使用するメールアドレス）
-MAIL_PASSWORD=（16桁のアプリパスワード）
-MAIL_ENCRYPTION=tls
-MAIL_FROM_ADDRESS=（使用するメールアドレス）
-MAIL_FROM_NAME="${APP_NAME}"
-
+# ゲストログイン
 GUEST_LOGIN_TOKEN=guest123
 ```
 
